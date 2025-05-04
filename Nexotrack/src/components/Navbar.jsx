@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link , NavLink} from 'react-router-dom'
 
 const Navbar = () => {
   const linkClass = "text-white hover:text-[#3399fe] transition-colors duration-500 hover:underline underline-offset-4  px-2 py-1 ";
@@ -11,6 +12,7 @@ const Navbar = () => {
         </h1>
         <div className='flex gap-5 text-base'>
             <a href="#" className={linkClass}>Home</a>
+            <NavLink to='./Dashboard' className={linkClass}>Dashboard</NavLink>
             <a href="#" className={linkClass}>Learn</a>
             <a href="#" className={linkClass}>Trending</a>
             <a href="#" className={linkClass}>Converter</a>
