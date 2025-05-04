@@ -21,7 +21,7 @@ const Navbar = () => {
                 <option>USD</option>
                 <option>INR</option>
             </select>
-            <button className='text-lg bg-[#3399fe] px-4 py-2 border border-[#3399fe] transition-colors duration-500 rounded-xl hover:bg-[#001c38] hover:text-[#3399fe] hover:border-[#3399fe] hover:px-5'
+            <button className='text-lg bg-[#3399fe] px-4 py-2 border border-[#3399fe] transition-colors duration-500 rounded-xl hover:bg-[#001c38] hover:text-[#3399fe] hover:border-[#3399fe] '
             >Log In</button>
         </div>
       </nav>
