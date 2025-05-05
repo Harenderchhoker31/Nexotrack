@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Ripple from '../images/ripple-xrp-seeklogo.png'
+import {link,NavLink} from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -62,6 +63,12 @@ const Login = () => {
               Log In
             </button>
           </form>
+          <p>
+            Don't have an account? 
+            <span>
+                <NavLink to="/signup"> Sign Up </NavLink>
+            </span>
+            </p>
 
           <p className="text-center text-sm text-gray-500 mt-6">
             Demo Login: <span className="text-white">anyone@gmail.com/ harry@123</span>

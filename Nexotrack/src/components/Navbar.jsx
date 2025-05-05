@@ -5,10 +5,10 @@ const Navbar = () => {
   const linkClass = " hover:text-blue-400 transition-colors duration-500 hover:underline underline-offset-4  px-2 py-1 ";
   return (
     <div className='sticky top-0 font-serif'>
-      <nav className='flex justify-between items-center px-5 py-4 bg-[#111111] text-white'>
+      <nav className='flex justify-between items-center px-5 py-4 bg-[black] text-white'>
         <h1 className='text-3xl font-black'>
           Nexo
-          <span className='text-blue-400'>Track</span>
+          <span className='text-blue-500'>Track</span>
         </h1>
         <div className='flex gap-5 text-base'>
             <NavLink to="/Home" className={linkClass}>Home</NavLink>
@@ -20,16 +20,16 @@ const Navbar = () => {
             <a href="#" className={linkClass}>Contact Us</a>
         </div>
         <div className='flex gap-4'>
-            <select className='border rounded-xl px-2 py-1'>
+            <select className='rounded-xl px-2 py-1'>
                 <option>USD</option>
                 <option>INR</option>
             </select>
-            <NavLink
+            <Link
               to="/login"
-              className="text-lg bg-blue-400 px-4 py-2 border border-[#000000] transition-colors duration-500 rounded-xl hover:bg-gray-800 hover:text-[White] hover:border-[white]"
+              className="text-lg bg-blue-500 px-4 py-2 border border-[#000000] transition-colors duration-500 rounded-xl hover:bg-black hover:text-[White] hover:border-[white]"
             >
               Log In
-            </NavLink>
+            </Link>
         </div>
       </nav>
     </div>
