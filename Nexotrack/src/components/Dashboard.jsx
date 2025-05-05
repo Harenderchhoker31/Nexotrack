@@ -70,6 +70,7 @@ const Dashboard = () => {
                     <td className="border px-4 py-3">{coin.name}</td>
                     <td className="border px-4 py-3 uppercase">{coin.symbol}</td>
                     <td className="border border-black px-7 py-3 text-xl text-green-700">${coin.current_price.toLocaleString()}</td>
+                
                     <td className="border px-4 py-3">
                       <button
                         onClick={() => setSelectedCoin(coin)}
