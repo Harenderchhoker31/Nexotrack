@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard'
 import { Route, Routes } from 'react-router-dom'
 import Home from './components/home'
 import Footer from './components/Footer'
+import Login from './components/login'
 
 
 function App() {
@@ -12,10 +13,13 @@ function App() {
     <div>
       <Navbar />
       <Routes>
-        <Route path="/Home" element={<Home />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/Home" element={<Dashboard />} />
         <Route path="/Dashboard" element={<Dashboard />} />
       </Routes>
       <Footer />
+    
+
     </div>
   )
 }
