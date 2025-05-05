@@ -2,17 +2,18 @@ import React from 'react'
 import {Link , NavLink} from 'react-router-dom'
 
 const Navbar = () => {
-  const linkClass = "text-white hover:text-[#3399fe] transition-colors duration-500 hover:underline underline-offset-4  px-2 py-1 ";
+  const linkClass = " hover:text-blue-400 transition-colors duration-500 hover:underline underline-offset-4  px-2 py-1 ";
   return (
-    <div>
-      <nav className='flex justify-between items-center px-12 py-5 bg-[#001c38] text-white'>
+    <div className='sticky top-0 font-serif'>
+      <nav className='flex justify-between items-center px-5 py-4 bg-gray-800 text-white'>
         <h1 className='text-3xl font-black'>
-          <span>Nexo</span>
-          <span className='text-[#3399fe]'>Track</span>
+          Nexo
+          <span className='text-blue-400'>Track</span>
         </h1>
         <div className='flex gap-5 text-base'>
-            <a href="#" className={linkClass}>Home</a>
-            <NavLink to='./Dashboard' className={linkClass}>Dashboard</NavLink>
+            <NavLink to="/Home" className={linkClass}>Home</NavLink>
+            <NavLink to='/Dashboard' className={linkClass}>Dashboard</NavLink>
+
             <a href="#" className={linkClass}>Learn</a>
             <a href="#" className={linkClass}>Trending</a>
             <a href="#" className={linkClass}>Converter</a>
@@ -23,7 +24,7 @@ const Navbar = () => {
                 <option>USD</option>
                 <option>INR</option>
             </select>
-            <button className='text-lg bg-[#3399fe] px-4 py-2 border border-[#3399fe] transition-colors duration-500 rounded-xl hover:bg-[#001c38] hover:text-[#3399fe] hover:border-[#3399fe] '
+            <button className='text-lg bg-blue-400 px-4 py-2 border  border-[#000000] transition-colors duration-500 rounded-xl hover:bg-gray-800 hover:text-[White] hover:border-[white] '
             >Log In</button>
         </div>
       </nav>

@@ -34,16 +34,16 @@ const Dashboard = () => {
   );
 
   return (
-    <div className="bg-gray-100 text-gray px-4 py-8">
+    <div className='text-gray px-4 py-8 font-serif'>
       <div className="w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-6">Cryptocurrencies</h2>
-        <div className="flex justify-center mb-8">
+        <h2 className="text-5xl font-bold text-center mb-10 mt-10 font-serif">CRYPTOCURRENCIES</h2>
+        <div className="flex justify-center mb-10">
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search..."
-            className="w-72 px-4 py-2 border border-gray-300 rounded-md bg-white"
+            className="w-100 px-4 py-2 border border-black rounded-md bg-white"
           />
         </div>
 
@@ -53,27 +53,27 @@ const Dashboard = () => {
           <div className="overflow-x-auto bg-white rounded-lg shadow-md">
             <table className="w-full table-auto border-collapse">
               <thead>
-                <tr className="bg-gray-800 text-white text-sm uppercase tracking-wider">
-                  <th className="px-6 py-4 border">Logo</th>
-                  <th className="px-6 py-4 border">Name</th>
-                  <th className="px-6 py-4 border">Symbol</th>
-                  <th className="px-6 py-4 border">Price (USD)</th>
-                  <th className="px-6 py-4 border">Action</th>
+                <tr className="bg-gray-800 text-white text-lg  tracking-wider">
+                  <th className="px-6 py-4 border">LOGO</th>
+                  <th className="px-6 py-4 border">NAME</th>
+                  <th className="px-6 py-4 border">SYMBOL</th>
+                  <th className="px-6 py-4 border">PRICE(USD)</th>
+                  <th className="px-6 py-4 border">ACTION</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredCoins.map((coin) => (
                   <tr key={coin.id} className="text-center hover:bg-gray-100 transition">
                     <td className="border px-4 py-3">
-                      <img src={coin.image} alt={coin.name} className="w-6 h-6 mx-auto" />
+                      <img src={coin.image} alt={coin.name} className="w-8 h-8 mx-auto" />
                     </td>
                     <td className="border px-4 py-3">{coin.name}</td>
                     <td className="border px-4 py-3 uppercase">{coin.symbol}</td>
-                    <td className="border px-4 py-3 font-medium">${coin.current_price.toLocaleString()}</td>
+                    <td className="border border-black px-7 py-3 text-xl text-green-700">${coin.current_price.toLocaleString()}</td>
                     <td className="border px-4 py-3">
                       <button
                         onClick={() => setSelectedCoin(coin)}
-                        className="bg-blue-600 text-white text-sm px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200"
+                        className="text-m bg-gray-800 px-4 py-2 border text-white border-[#000000] transition-colors duration-500 rounded-xl hover:bg-gray-100 hover:text-[#000000] hover:border-[#000000]"
                       >
                         View Details
                       </button>
@@ -83,18 +83,18 @@ const Dashboard = () => {
               </tbody>
             </table>
 
-            <div className="flex justify-center space-x-4 mt-4">
+            <div className="flex justify-center gap-5 mt-4 mb-5">
               <button
                 onClick={handlePrev}
                 disabled={page === 1}
-                className="px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-400"
+                className="text-lg bg-gray-800 px-4 py-2 border text-white border-[#000000] transition-colors duration-500 rounded-xl hover:bg-gray-100  hover:text-[#000000] hover:border-[#000000]"
               >
                 Previous
               </button>
-              <span className="text-lg font-medium">{page}</span>
+              <span className="text-xl font-medium mt-4">{page}</span>
               <button
                 onClick={handleNext}
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                className="text-lg bg-gray-800 px-4 py-2 border text-white border-[#000000] transition-colors duration-500 rounded-xl hover:bg-gray-100 hover:text-[#000000] hover:border-[#000000]"
               >
                 Next
               </button>
