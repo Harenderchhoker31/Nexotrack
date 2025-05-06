@@ -9,6 +9,8 @@ import Login from './components/login'
 import Landing from './components/landing'
 import Signup from './components/Signup'
 import Contactus from './components/Contactus'
+import Learn from './components/learn'
+import Trending from './components/trending'
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/signup" element={<Signup />} />
         <Route path='/contactus' element={<Contactus/>}/>
+        <Route path='/Learn' element={<Learn/>}/>
+        <Route path='/Trending' element={<Trending/>}/>
       </Routes>
     </div>
   )

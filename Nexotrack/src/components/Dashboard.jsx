@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { fetchCoins } from '../api/coinGecko';
+import CoinDetail from './coindetail';
+
 
 const Dashboard = () => {
   const [coins, setCoins] = useState([]);
@@ -10,13 +13,19 @@ const Dashboard = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    setLoading(true);
-    fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=10&page=${page}`)
-      .then((res) => res.json())
-      .then((data) => {
+    const getCoins = async () => {
+      setLoading(true);
+      try {
+        const data = await fetchCoins(page);
         setCoins(data);
+      } catch (error) {
+        console.error('Error fetching coins:', error);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    getCoins();
   }, [page]);
 
   const filteredCoins = coins.filter((coin) =>
@@ -103,21 +112,9 @@ const Dashboard = () => {
       )}
 
       {selectedCoin && (
-        <div className="mt-12 bg-gray-900 p-6 sm:p-10 rounded-2xl shadow-lg">
-          <h2 className="text-2xl font-bold text-center mb-6">
-            {selectedCoin.name} Details
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-300">
-            <p>Symbol:{selectedCoin.symbol.toUpperCase()}</p>
-            <p>Current Price: ${selectedCoin.current_price.toLocaleString()}</p>
-            <p>Market Cap:${selectedCoin.market_cap.toLocaleString()}</p>
-            <p>24h Change:{selectedCoin.price_change_percentage_24h}%</p>
-          </div>
-          <div className="flex justify-center mt-6">
-            <img src={selectedCoin.image} alt={selectedCoin.name} className="w-12 h-12" />
-          </div>
-        </div>
+        <CoinDetail coin={selectedCoin} onClose={() => setSelectedCoin(null)} />
       )}
+
     </div>
   </div>
   <Footer/>

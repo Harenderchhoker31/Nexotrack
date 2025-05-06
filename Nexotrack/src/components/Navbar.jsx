@@ -13,9 +13,9 @@ const Navbar = () => {
         <div className='flex gap-5 text-base'>
             <NavLink to='/Dashboard' className={linkClass}>Dashboard</NavLink>
 
-            <a href="#" className={linkClass}>Learn</a>
-            <a href="#" className={linkClass}>Trending</a>
-            <a href="#" className={linkClass}>Converter</a>
+            <NavLink to='/learn' className={linkClass}>Learn</NavLink>
+            <NavLink to='/trending' className={linkClass}>Trending</NavLink>
+            <NavLink to='/converter' className={linkClass}>Converter</NavLink>
             <NavLink to='/contactus' className={linkClass}>Contact Us</NavLink>
         </div>
         <div className='flex gap-4'>

@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../images/ripple-xrp-seeklogo.png'
+import { NavLink } from 'react-router-dom';
 
 export default function Home() {
   return (
@@ -18,9 +19,11 @@ export default function Home() {
             Easily track your crypto transactions and generate accurate tax reports.
           </p>
           <div className="flex">
-            <button className="bg-white text-blue-700 font-semibold px-6 py-3 rounded-lg hover:bg-black hover:text-white">
+          <NavLink
+            to='/signup'
+             className="bg-white text-blue-700 font-semibold border border-[#000000] px-4 py-2 rounded-lg transition-colors duration-500 hover:bg-black hover:text-white hover:border-[white]">
               Get Started
-            </button>
+            </NavLink>
           </div>
         </div>
 
