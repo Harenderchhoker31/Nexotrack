@@ -11,13 +11,12 @@ const Navbar = () => {
           <span className='text-blue-500'>Track</span>
         </h1>
         <div className='flex gap-5 text-base'>
-            <NavLink to="/Home" className={linkClass}>Home</NavLink>
             <NavLink to='/Dashboard' className={linkClass}>Dashboard</NavLink>
 
             <a href="#" className={linkClass}>Learn</a>
             <a href="#" className={linkClass}>Trending</a>
             <a href="#" className={linkClass}>Converter</a>
-            <a href="#" className={linkClass}>Contact Us</a>
+            <NavLink to='/contactus' className={linkClass}>Contact Us</NavLink>
         </div>
         <div className='flex gap-4'>
             <select className='rounded-xl px-2 py-1'>

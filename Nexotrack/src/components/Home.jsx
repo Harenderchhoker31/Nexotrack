@@ -35,7 +35,7 @@ export default function Home() {
       </div>
 
 
-      <div className="border-y mb-1 border-gray-600 py-10 bg-black text-center text-gray-300">
+      <div className="border-y mb-10 border-gray-600 py-10 bg-black text-center text-gray-300">
         <div className="flex justify-center gap-40 max-w-5xl mx-auto text-lg">
           <div>
             <p className="text-white text-2xl font-bold">2012</p>

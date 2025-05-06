@@ -14,7 +14,9 @@ const Landing = () => {
           <span className='text-blue-500'>Track</span>
         </h1>
         <div className='flex gap-5 text-base'>
-            <NavLink className="bg-white text-blue-700 font-semibold border border-[#000000] px-4 py-2 rounded-lg transition-colors duration-500 hover:bg-black hover:text-white hover:border-[white]">
+            <NavLink
+            to='/signup'
+             className="bg-white text-blue-700 font-semibold border border-[#000000] px-4 py-2 rounded-lg transition-colors duration-500 hover:bg-black hover:text-white hover:border-[white]">
               Get Started
             </NavLink>
             <NavLink

@@ -3,19 +3,13 @@ import { useNavigate ,NavLink} from 'react-router-dom';
 import Ripple from '../images/ripple-xrp-seeklogo.png'
 
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const Signup = () => {
 
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-
-    if (email === 'anyone@gmail.com' && password === 'harry@123') {
-        navigate('/dashboard');
-    } else {
-      alert('Invalid email or password')
-    }
+  const handleSignup = (e) => {
+    e.preventDefault();
+    navigate('/dashboard');
   };
 
   return (
@@ -35,15 +29,20 @@ const Login = () => {
         </div>
 
         <div className="w-full md:w-1/2 bg-[#1e293b] p-10 text-white flex flex-col justify-center">
-          <h2 className="text-3xl font-bold text-center mb-6">Login!!</h2>
+          <h2 className="text-3xl font-bold text-center mb-6">Sign Up!!</h2>
 
-          <form onSubmit={handleLogin} className="space-y-6">
+          <form onSubmit={handleSignup} className="space-y-6">
+          <input
+              type="text"
+              placeholder="Username"
+              className="w-full px-4 py-3 rounded-xl bg-gray-800 "
+              required
+            />
+
             <input
               type="email"
               placeholder="Email"
               className="w-full px-4 py-3 rounded-xl bg-gray-800 "
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               required
             />
 
@@ -51,8 +50,13 @@ const Login = () => {
               type="password"
               placeholder="Password"
               className="w-full px-4 py-3 rounded-xl bg-gray-800 "
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              className="w-full px-4 py-3 rounded-xl bg-gray-800 "
               required
             />
 
@@ -60,19 +64,15 @@ const Login = () => {
               type="submit"
               className="w-full bg-blue-600 hover:bg-blue-500 py-3 rounded-xl font-semibold  transition"
             >
-              Log In
+              Sign Up
             </button>
           </form>
 
           <p className="text-center text-sm text-gray-400 mt-4">
-            Don't have an account?
-            <NavLink to="/signup" className="text-blue-400 hover:underline">
-              Sign Up
+            Already have account?
+            <NavLink to="/login" className="text-blue-400 hover:underline">
+              Log In
             </NavLink>
-          </p>
-
-          <p className="text-center text-sm text-gray-400 mt-6">
-            Demo Login: <span className="text-white">anyone@gmail.com/ harry@123</span>
           </p>
         </div>
       </div>
@@ -80,4 +80,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
