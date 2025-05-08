@@ -29,7 +29,7 @@ const Trending = () => {
     <div className="min-h-screen bg-black text-white px-4 py-10 font-sans">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl sm:text-5xl font-extrabold text-center mb-10">
-          🚀 Trending Cryptocurrencies
+          Trending Cryptocurrencies 🚀 
         </h1>
 
         {loading ? (
