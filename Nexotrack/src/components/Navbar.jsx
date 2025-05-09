@@ -27,8 +27,7 @@ const Navbar = () => {
               to="/login"
               className="text-lg bg-blue-500 px-4 py-2 border border-[#000000] transition-colors duration-500 rounded-xl hover:bg-black hover:text-[White] hover:border-[white]"
             >
-              Log In
-            </Link>
+             
         </div>
       </nav>
     </div>
