@@ -2,7 +2,7 @@ import React from 'react'
 import {Link , NavLink} from 'react-router-dom'
 
 const Navbar = () => {
-  const linkClass = "  hover:text-blue-400 transition-colors duration-500 hover:underline underline-offset-4  px-2 py-1 ";
+  const linkClass = " hover:text-blue-400 transition-colors duration-500 hover:underline underline-offset-4  px-2 py-1 ";
   return (
     <div className='sticky top-0 font-serif'>
       <nav className='flex justify-between items-center px-5 py-4 bg-[black] text-white'>
