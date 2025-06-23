@@ -24,7 +24,7 @@ const Learn = () => {
         return (
             <div>
                 <Navbar/>
-          <div className="min-h-screen bg-black text-white px-6 py-10">
+          <div className="min-h-screen bg-[#030712] text-white px-6 py-10">
             <div className="max-w-5xl mx-auto">
               <h1 className="text-4xl font-bold mb-6 text-center">📘 Learn Crypto with NexoTrack</h1>
               <p className="text-gray-400 text-center mb-10">
