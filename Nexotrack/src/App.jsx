@@ -1,16 +1,14 @@
 import React from 'react'
-import Navbar from './components/Navbar'
 import './App.css'
 import Dashboard from './components/Dashboard'
 import { Route, Routes } from 'react-router-dom'
-import Home from './components/home'
-import Footer from './components/Footer'
 import Login from './components/login'
 import Landing from './components/landing'
 import Signup from './components/Signup'
 import Contactus from './components/Contactus'
 import Learn from './components/learn'
 import Trending from './components/trending'
+import Converter from './components/converter'
 
 
 function App() {
@@ -25,6 +23,7 @@ function App() {
         <Route path='/contactus' element={<Contactus/>}/>
         <Route path='/Learn' element={<Learn/>}/>
         <Route path='/Trending' element={<Trending/>}/>
+        <Route path='/Converter' element={<Converter/>}/>
       </Routes>
     </div>
   )
