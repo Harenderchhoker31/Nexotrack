@@ -38,8 +38,8 @@ const Converter = () => {
   return (
     <div>
     <Navbar/>
-    <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 flex items-center justify-center p-6">
-      <div className="w-full max-w-2xl glass rounded-2xl shadow-xl p-8 text-white">
+    <div className="min-h-screen bg-gradient-to-br bg-gray-950 flex items-center justify-center p-6">
+      <div className="w-full max-w-2xl glass rounded-2xl bg-gray-900 shadow-xl p-8 text-white">
         <h1 className="text-3xl font-bold text-center mb-6"> Crypto Converter</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
