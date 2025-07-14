@@ -19,6 +19,21 @@ const Learn = () => {
             description: "A glossary of essential terms every trader and investor should know.",
             link: "#",
           },
+          {
+            title: "Understanding Blockchain Technology",
+            description: "Learn how blockchain works and its applications beyond cryptocurrency.",
+            link: "#",
+          },
+          {
+            title: "Crypto Trading Strategies for Beginners",
+            description: "Explore different trading strategies to maximize your crypto investments.",
+            link: "#",
+          },
+          {
+            title: "The Future of Cryptocurrency",
+            description: "Insights into the future trends and potential of digital currencies.",
+            link: "#",
+          },  
         ];
       
         return (
@@ -48,6 +63,21 @@ const Learn = () => {
                   </div>
                 ))}
               </div>
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold mt-10 text-center">Join Our Community</h2>
+              <p className="text-gray-400 text-center mb-6">
+                Connect with fellow crypto enthusiasts and stay updated with the latest news.
+              </p>
+              <div className="flex justify-center">
+                <a
+                  href="#"
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300"
+                >
+                  Join Discord
+                </a>
+              </div>
+
             </div>
           </div>
           <Footer/>
