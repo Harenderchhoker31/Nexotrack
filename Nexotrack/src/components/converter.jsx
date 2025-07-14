@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const Converter = () => {
   const [coins, setCoins] = useState([]);
@@ -12,7 +14,7 @@ const Converter = () => {
     const fetchCoins = async () => {
       try {
         const res = await fetch(
-          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1"
+          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1`
         );
         const data = await res.json();
         setCoins(data);
@@ -47,6 +49,7 @@ const Converter = () => {
   const to = coins.find((c) => c.id === toCoin);
 
   return (
+    <div><Navbar/>
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 text-white flex items-center justify-center p-6">
       <div className="bg-gray-900/80 backdrop-blur-md rounded-3xl shadow-2xl border border-gray-700 p-8 w-full max-w-3xl">
         <h1 className="text-4xl font-bold mb-8 text-center text-purple-400 tracking-wide">
@@ -122,6 +125,8 @@ const Converter = () => {
           Powered by CoinGecko API
         </div>
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 };
