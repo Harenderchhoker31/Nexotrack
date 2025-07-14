@@ -1,111 +1,127 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import React, { useEffect, useState } from "react";
 
 const Converter = () => {
   const [coins, setCoins] = useState([]);
-  const [fromCoin, setFromCoin] = useState(null);
-  const [toCoin, setToCoin] = useState(null);
   const [amount, setAmount] = useState(1);
-  const [converted, setConverted] = useState(null);
-  const [page] = useState(1);
+  const [fromCoin, setFromCoin] = useState("bitcoin");
+  const [toCoin, setToCoin] = useState("ethereum");
+  const [converted, setConverted] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCoins = async () => {
-      const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=10&page=${page}`);
-      const data = await res.json();
-      setCoins(data);
-      setFromCoin(data[0]);
-      setToCoin(data[1]);
+      try {
+        const res = await fetch(
+          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1"
+        );
+        const data = await res.json();
+        setCoins(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching coin data:", error);
+        setLoading(false);
+      }
     };
 
     fetchCoins();
-  }, [page]);
+  }, []);
 
   useEffect(() => {
-    if (fromCoin && toCoin) {
-      const result = (amount * fromCoin.current_price) / toCoin.current_price;
+    const from = coins.find((coin) => coin.id === fromCoin);
+    const to = coins.find((coin) => coin.id === toCoin);
+    if (from && to) {
+      const result = (amount * from.current_price) / to.current_price;
       setConverted(result);
     }
-  }, [amount, fromCoin, toCoin]);
+  }, [amount, fromCoin, toCoin, coins]);
 
-  const swapCoins = () => {
-    const temp = fromCoin;
-    setFromCoin(toCoin);
-    setToCoin(temp);
-  };
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white bg-black">
+        Loading coins...
+      </div>
+    );
+  }
+
+  const from = coins.find((c) => c.id === fromCoin);
+  const to = coins.find((c) => c.id === toCoin);
 
   return (
-    <div>
-    <Navbar/>
-    <div className="min-h-screen bg-gradient-to-br bg-gray-950 flex items-center justify-center p-6">
-      <div className="w-full max-w-2xl glass rounded-2xl bg-gray-900 shadow-xl p-8 text-white">
-        <h1 className="text-3xl font-bold text-center mb-6"> Crypto Converter</h1>
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 text-white flex items-center justify-center p-6">
+      <div className="bg-gray-900/80 backdrop-blur-md rounded-3xl shadow-2xl border border-gray-700 p-8 w-full max-w-3xl">
+        <h1 className="text-4xl font-bold mb-8 text-center text-purple-400 tracking-wide">
+          🚀 Crypto Converter
+        </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div>
-            <label className="text-sm mb-2 block">From Currency</label>
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          <div className="flex flex-col">
+            <label className="mb-1 text-sm text-gray-300">Amount</label>
+            <input
+              type="number"
+              className="rounded-xl px-4 py-3 bg-gray-800 text-white"
+              value={amount}
+              onChange={(e) => setAmount(Number(e.target.value))}
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <label className="mb-1 text-sm text-gray-300">Converted Amount</label>
+            <div className="rounded-xl px-4 py-3 bg-gray-800 text-purple-400 text-lg font-semibold">
+              {converted.toFixed(6)} {to?.symbol?.toUpperCase()}
+            </div>
+          </div>
+
+          <div className="flex flex-col">
+            <label className="mb-1 text-sm text-gray-300">From Coin</label>
             <select
-              value={fromCoin?.id}
-              onChange={(e) => setFromCoin(coins.find(c => c.id === e.target.value))}
-              className="w-full bg-gray-800 text-white p-3 rounded-lg"
+              className="rounded-xl px-4 py-3 bg-gray-800 text-white"
+              value={fromCoin}
+              onChange={(e) => setFromCoin(e.target.value)}
             >
               {coins.map((coin) => (
                 <option key={coin.id} value={coin.id}>
-                  {coin.name} ({coin.symbol.toUpperCase()}) - ${coin.current_price}
+                  {coin.name} ({coin.symbol.toUpperCase()})
                 </option>
               ))}
             </select>
           </div>
 
-          <div>
-            <label className="text-sm mb-2 block">To Currency</label>
+          <div className="flex flex-col">
+            <label className="mb-1 text-sm text-gray-300">To Coin</label>
             <select
-              value={toCoin?.id}
-              onChange={(e) => setToCoin(coins.find(c => c.id === e.target.value))}
-              className="w-full bg-gray-800 text-white p-3 rounded-lg"
+              className="rounded-xl px-4 py-3 bg-gray-800 text-white"
+              value={toCoin}
+              onChange={(e) => setToCoin(e.target.value)}
             >
               {coins.map((coin) => (
                 <option key={coin.id} value={coin.id}>
-                  {coin.name} ({coin.symbol.toUpperCase()}) - ${coin.current_price}
+                  {coin.name} ({coin.symbol.toUpperCase()})
                 </option>
               ))}
             </select>
           </div>
         </div>
 
-        <div className="flex justify-center mb-6">
-          <button
-            onClick={swapCoins}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-full text-white shadow"
-          >
-            Swap
-          </button>
-        </div>
-
-        <div className="mb-6 text-center">
-          <label className="text-sm block mb-2">Amount in {fromCoin?.symbol?.toUpperCase()}</label>
-          <input
-            type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            className="w-40 text-center p-3 bg-gray-800 rounded-lg text-white"
-          />
-        </div>
-
-        {converted && (
-          <div className="text-center mt-4">
-            <p className="text-lg font-semibold">
-              {amount} {fromCoin?.symbol?.toUpperCase()} ≈{' '}
-              <span className="text-green-400">
-                {converted.toFixed(6)} {toCoin?.symbol?.toUpperCase()}
-              </span>
-            </p>
+        <div className="grid md:grid-cols-2 gap-6 mt-4 text-sm text-gray-400">
+          <div className="bg-gray-800 p-4 rounded-xl">
+            <p className="font-semibold text-purple-300">{from?.name}</p>
+            <p>Symbol: {from?.symbol?.toUpperCase()}</p>
+            <p>Price: ${from?.current_price?.toLocaleString()}</p>
+            <p>Rank: #{from?.market_cap_rank}</p>
           </div>
-        )}
+
+          <div className="bg-gray-800 p-4 rounded-xl">
+            <p className="font-semibold text-purple-300">{to?.name}</p>
+            <p>Symbol: {to?.symbol?.toUpperCase()}</p>
+            <p>Price: ${to?.current_price?.toLocaleString()}</p>
+            <p>Rank: #{to?.market_cap_rank}</p>
+          </div>
+        </div>
+
+        <div className="text-center mt-8 text-sm text-gray-500">
+          Powered by CoinGecko API
+        </div>
       </div>
-    </div>
-    <Footer/>
     </div>
   );
 };
