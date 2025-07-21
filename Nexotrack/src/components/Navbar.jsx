@@ -19,10 +19,9 @@ const Navbar = () => {
             <NavLink to='/contactus' className={linkClass}>Contact Us</NavLink>
         </div>
         <div className='flex gap-4'>
-            <select className='rounded-xl px-2 py-1'>
-                <option>USD</option>
-                <option>INR</option>
-            </select>
+          <NavLink to='/login' className={linkClass}>Log Out</NavLink>
+          <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_hybrid&w=740" className='h-10 w-10 rounded-4xl' alt="" />
+              
              
         </div>
       </nav>
