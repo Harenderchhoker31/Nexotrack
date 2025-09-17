@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate ,NavLink} from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
+import { toast } from 'react-toastify';
 import Ripple from '../images/ripple-xrp-seeklogo.png'
 
 
@@ -9,12 +12,14 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-
-    if (email === 'anyone@gmail.com' && password === 'harry@123') {
-        navigate('/dashboard');
-    } else {
-      alert('Invalid email or password')
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      toast.success('Login successful!');
+      navigate('/dashboard');
+    } catch (error) {
+      toast.error(error.message);
     }
   };
 
@@ -69,10 +74,6 @@ const Login = () => {
             <NavLink to="/signup" className="text-blue-400 hover:underline">
               Sign Up
             </NavLink>
-          </p>
-
-          <p className="text-center text-sm text-gray-400 mt-6">
-            Demo Login: <span className="text-white">anyone@gmail.com/ harry@123</span>
           </p>
         </div>
       </div>

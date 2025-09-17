@@ -1,15 +1,31 @@
 import React, { useState } from 'react';
-import { useNavigate ,NavLink} from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
+import { toast } from 'react-toastify';
 import Ripple from '../images/ripple-xrp-seeklogo.png'
 
 
 const Signup = () => {
-
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    navigate('/dashboard');
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      toast.success('Account created successfully!');
+      navigate('/dashboard');
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (
@@ -32,31 +48,39 @@ const Signup = () => {
           <h2 className="text-3xl font-bold text-center mb-6">Sign Up!!</h2>
 
           <form onSubmit={handleSignup} className="space-y-6">
-          <input
+            <input
               type="text"
               placeholder="Username"
-              className="w-full px-4 py-3 rounded-xl bg-gray-800 "
+              className="w-full px-4 py-3 rounded-xl bg-gray-800"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
 
             <input
               type="email"
               placeholder="Email"
-              className="w-full px-4 py-3 rounded-xl bg-gray-800 "
+              className="w-full px-4 py-3 rounded-xl bg-gray-800"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
 
             <input
               type="password"
               placeholder="Password"
-              className="w-full px-4 py-3 rounded-xl bg-gray-800 "
+              className="w-full px-4 py-3 rounded-xl bg-gray-800"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
 
             <input
               type="password"
               placeholder="Confirm Password"
-              className="w-full px-4 py-3 rounded-xl bg-gray-800 "
+              className="w-full px-4 py-3 rounded-xl bg-gray-800"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
 
