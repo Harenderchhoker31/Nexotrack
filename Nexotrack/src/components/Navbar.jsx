@@ -47,12 +47,14 @@ const Navbar = () => {
         
         <div className='flex items-center gap-4 relative' ref={dropdownRef}>
           <div className='flex items-center gap-3'>
-            <img 
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&auto=format" 
-              className='h-10 w-10 rounded-full border-2 border-blue-500 cursor-pointer hover:border-purple-500 transition-colors' 
-              alt="Profile"
+            <div 
+              className='h-10 w-10 rounded-full bg-gray-500 flex items-center justify-center cursor-pointer hover:bg-gray-400 transition-colors'
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            />
+            >
+              <svg className='w-6 h-6 text-white' fill='currentColor' viewBox='0 0 20 20'>
+                <path fillRule='evenodd' d='M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z' clipRule='evenodd' />
+              </svg>
+            </div>
             <div className='hidden sm:block'>
               <p className='text-sm font-medium'>{currentUser?.email || 'Guest'}</p>
             </div>
