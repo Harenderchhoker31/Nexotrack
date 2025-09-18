@@ -39,24 +39,26 @@ const Learn = () => {
         return (
             <div>
                 <Navbar/>
-          <div className="min-h-screen bg-[#030712] text-white px-6 py-10">
-            <div className="max-w-5xl mx-auto">
-              <h1 className="text-4xl font-bold mb-6 text-center">📘 Learn Crypto with NexoTrack</h1>
-              <p className="text-gray-400 text-center mb-10">
+          <div className="min-h-screen bg-gray-900 text-white px-8 py-12">
+            <div className="max-w-6xl mx-auto">
+              <h1 className="text-5xl font-black mb-8 text-center tracking-tight text-white">📘 Learn Crypto with NexoTrack</h1>
+              <p className="text-xl text-gray-300 text-center mb-16 max-w-3xl mx-auto leading-relaxed">
                 Stay informed. Learn the fundamentals and trends shaping the crypto world.
               </p>
       
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {articles.map((article, index) => (
                   <div
                     key={index}
-                    className="bg-zinc-900 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition duration-300"
+                    className="bg-gray-800 border border-gray-600 shadow-xl p-8 hover:bg-gray-700 transition-all duration-300 transform hover:scale-105 rounded-2xl"
                   >
-                    <h2 className="text-xl font-semibold mb-2">{article.title}</h2>
-                    <p className="text-gray-400 mb-4">{article.description}</p>
+                    <h2 className="text-2xl font-bold mb-4 text-white">{article.title}</h2>
+                    <p className="text-gray-300 mb-6 leading-relaxed">{article.description}</p>
                     <a
-                      href={article.link}
-                      className="text-blue-500 hover:underline"
+                      href={article.link === "#" ? "https://www.tradingview.com/news/crypto/" : article.link}
+                      className="text-gray-400 hover:text-white hover:underline font-bold text-lg transition-all duration-300"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Read More →
                     </a>
@@ -64,15 +66,17 @@ const Learn = () => {
                 ))}
               </div>
             </div>
-            <div>
-              <h2 className="text-2xl font-bold mt-10 text-center">Join Our Community</h2>
-              <p className="text-gray-400 text-center mb-6">
+            <div className="mt-20">
+              <h2 className="text-4xl font-black text-center mb-6 text-white">Join Our Community</h2>
+              <p className="text-xl text-gray-300 text-center mb-10 max-w-2xl mx-auto">
                 Connect with fellow crypto enthusiasts and stay updated with the latest news.
               </p>
               <div className="flex justify-center">
                 <a
-                  href="#"
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300"
+                  href="https://discord.gg/nexotrack"
+                  className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 transition-all duration-300 shadow-xl hover:shadow-purple-500/25 transform hover:scale-105 text-lg rounded-lg"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Join Discord
                 </a>

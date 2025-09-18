@@ -50,34 +50,34 @@ const Converter = () => {
 
   return (
     <div><Navbar/>
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 text-white flex items-center justify-center p-6">
-      <div className="bg-gray-900/80 backdrop-blur-md rounded-3xl shadow-2xl border border-gray-700 p-8 w-full max-w-3xl">
-        <h1 className="text-4xl font-bold mb-8 text-center text-purple-400 tracking-wide">
+    <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center p-8">
+      <div className="bg-gray-800 border border-gray-600 shadow-2xl p-12 w-full max-w-4xl rounded-2xl">
+        <h1 className="text-5xl font-black mb-12 text-center tracking-tight text-white">
           🚀 Crypto Converter
         </h1>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-6">
+        <div className="grid md:grid-cols-2 gap-8 mb-8">
           <div className="flex flex-col">
-            <label className="mb-1 text-sm text-gray-300">Amount</label>
+            <label className="mb-3 text-lg font-bold text-gray-300">Amount</label>
             <input
               type="number"
-              className="rounded-xl px-4 py-3 bg-gray-800 text-white"
+              className="border border-gray-600 px-6 py-4 bg-gray-700 text-white text-lg font-semibold focus:ring-2 focus:ring-gray-500 focus:border-gray-500 transition-all duration-300 rounded-lg"
               value={amount}
               onChange={(e) => setAmount(Number(e.target.value))}
             />
           </div>
 
           <div className="flex flex-col">
-            <label className="mb-1 text-sm text-gray-300">Converted Amount</label>
-            <div className="rounded-xl px-4 py-3 bg-gray-800 text-purple-400 text-lg font-semibold">
+            <label className="mb-3 text-lg font-bold text-gray-300">Converted Amount</label>
+            <div className="border border-gray-600 px-6 py-4 bg-gray-700 text-green-400 text-xl font-bold rounded-lg">
               {converted.toFixed(6)} {to?.symbol?.toUpperCase()}
             </div>
           </div>
 
           <div className="flex flex-col">
-            <label className="mb-1 text-sm text-gray-300">From Coin</label>
+            <label className="mb-3 text-lg font-bold text-gray-300">From Coin</label>
             <select
-              className="rounded-xl px-4 py-3 bg-gray-800 text-white"
+              className="border border-gray-600 px-6 py-4 bg-gray-700 text-white text-lg font-semibold focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 rounded-lg"
               value={fromCoin}
               onChange={(e) => setFromCoin(e.target.value)}
             >
@@ -90,9 +90,9 @@ const Converter = () => {
           </div>
 
           <div className="flex flex-col">
-            <label className="mb-1 text-sm text-gray-300">To Coin</label>
+            <label className="mb-3 text-lg font-bold text-gray-300">To Coin</label>
             <select
-              className="rounded-xl px-4 py-3 bg-gray-800 text-white"
+              className="border border-gray-600 px-6 py-4 bg-gray-700 text-white text-lg font-semibold focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 rounded-lg"
               value={toCoin}
               onChange={(e) => setToCoin(e.target.value)}
             >
@@ -105,23 +105,23 @@ const Converter = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mt-4 text-sm text-gray-400">
-          <div className="bg-gray-800 p-4 rounded-xl">
-            <p className="font-semibold text-purple-300">{from?.name}</p>
-            <p>Symbol: {from?.symbol?.toUpperCase()}</p>
-            <p>Price: ${from?.current_price?.toLocaleString()}</p>
-            <p>Rank: #{from?.market_cap_rank}</p>
+        <div className="grid md:grid-cols-2 gap-8 mt-8 text-lg">
+          <div className="bg-gray-700 border border-gray-600 p-6 shadow-lg rounded-xl">
+            <p className="font-black text-white text-xl mb-2">{from?.name}</p>
+            <p className="font-semibold text-gray-300">Symbol: {from?.symbol?.toUpperCase()}</p>
+            <p className="font-semibold text-gray-300">Price: ${from?.current_price?.toLocaleString()}</p>
+            <p className="font-semibold text-gray-300">Rank: #{from?.market_cap_rank}</p>
           </div>
 
-          <div className="bg-gray-800 p-4 rounded-xl">
-            <p className="font-semibold text-purple-300">{to?.name}</p>
-            <p>Symbol: {to?.symbol?.toUpperCase()}</p>
-            <p>Price: ${to?.current_price?.toLocaleString()}</p>
-            <p>Rank: #{to?.market_cap_rank}</p>
+          <div className="bg-gray-700 border border-gray-600 p-6 shadow-lg rounded-xl">
+            <p className="font-black text-white text-xl mb-2">{to?.name}</p>
+            <p className="font-semibold text-gray-300">Symbol: {to?.symbol?.toUpperCase()}</p>
+            <p className="font-semibold text-gray-300">Price: ${to?.current_price?.toLocaleString()}</p>
+            <p className="font-semibold text-gray-300">Rank: #{to?.market_cap_rank}</p>
           </div>
         </div>
 
-        <div className="text-center mt-8 text-sm text-gray-500">
+        <div className="text-center mt-12 text-lg font-semibold text-gray-300">
           Powered by CoinGecko API
         </div>
       </div>

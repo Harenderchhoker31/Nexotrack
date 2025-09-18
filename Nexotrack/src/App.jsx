@@ -20,13 +20,13 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path='/contactus' element={<Contactus/>}/>
-          <Route path='/Learn' element={<Learn/>}/>
-          <Route path='/Trending' element={<Trending/>}/>
-          <Route path='/Converter' element={<Converter/>}/>
+          <Route path='/contact-us' element={<Contactus/>}/>
+          <Route path='/learn' element={<Learn/>}/>
+          <Route path='/trending' element={<Trending/>}/>
+          <Route path='/converter' element={<Converter/>}/>
         </Routes>
         <ToastContainer />
       </div>
