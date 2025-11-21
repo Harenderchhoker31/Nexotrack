@@ -21,28 +21,28 @@ const CoinDetail = ({ coin, onClose }) => {
         </div>
 
         <div className="grid grid-cols-2 gap-6 text-lg text-gray-300 mb-8">
-          <p><span className="font-semibold text-white">Symbol : </span> <span className="text-gray-300">{coin.symbol.toUpperCase()}</span></p>
+          <p><span className="font-semibold text-white">Symbol : </span> <span className="text-gray-300">{coin.symbol?.toUpperCase() || 'N/A'}</span></p>
           <p><span className="font-semibold text-white">Price : </span> 
-            <span className="text-green-400 font-bold">$ {coin.current_price.toLocaleString()}</span>
+            <span className="text-green-400 font-bold">$ {coin.current_price?.toLocaleString() || 'N/A'}</span>
           </p>
           <p><span className="font-semibold text-white">Market Cap : </span>
-            <span className="text-blue-400">$ {coin.market_cap.toLocaleString()}</span>
+            <span className="text-blue-400">$ {coin.market_cap?.toLocaleString() || 'N/A'}</span>
           </p>
           <p>
             <span className="font-semibold text-white">24 Hours Change : </span> 
-              <span className={`font-bold ${coin.price_change_percentage_24h >= 0 ? 'text-green-400' : 'text-red-400'}`}> {coin.price_change_percentage_24h}%</span>
+              <span className={`font-bold ${(coin.price_change_percentage_24h || 0) >= 0 ? 'text-green-400' : 'text-red-400'}`}> {coin.price_change_percentage_24h?.toFixed(2) || 'N/A'}%</span>
           </p>
           <p><span className="font-semibold text-white">Market Cap Rank : </span> 
-            <span className="text-gray-300"> {coin.market_cap_rank}</span>
+            <span className="text-gray-300"> {coin.market_cap_rank || 'N/A'}</span>
           </p>
           <p><span className="font-semibold text-white">High 24h : </span>
-            <span className="text-green-400">$ {coin.high_24h.toLocaleString()}</span>
+            <span className="text-green-400">$ {coin.high_24h?.toLocaleString() || 'N/A'}</span>
           </p>
           <p><span className="font-semibold text-white">Low 24h:</span>
-            <span className="text-red-400">$ {coin.low_24h.toLocaleString()}</span>
+            <span className="text-red-400">$ {coin.low_24h?.toLocaleString() || 'N/A'}</span>
           </p>
           <p><span className="font-semibold text-white">Last Updated : </span>
-            <span className="text-gray-300"> {new Date(coin.last_updated).toLocaleString()}</span>
+            <span className="text-gray-300"> {coin.last_updated ? new Date(coin.last_updated).toLocaleString() : 'N/A'}</span>
           </p>
         </div>
 
